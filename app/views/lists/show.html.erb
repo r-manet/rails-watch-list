@@ -2,13 +2,32 @@
 
 <%= link_to 'Add a Movie', new_list_bookmark_path(@list) %>
 
-<ul>
-  <% @list.bookmarks.each do |bookmark| %>
-  <li>
-      <%= bookmark.movie.title %>
-      <p>Thoughts: <%= bookmark.comment %></p>
-  </li>
-  <% end %>
-</ul>
+<div class='big-box'>
 
-<%= link_to 'Home', lists_path %>
+    <div class='card-img d-flex'>
+
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="movie">
+          <%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title, class:"movie-poster" %>
+
+
+
+
+          <div class="card-trip-infos">
+            <div class='movie_title'>
+              <h3><%= bookmark.movie.title %></h3>
+              <p class="card-trip-pricing"><%= bookmark.movie.rating %></p>
+            </div>
+
+            <div>
+              <%= bookmark.movie.overview %>
+            </div>
+
+            <div>
+              <p>Thoughts: <%= bookmark.comment %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+</div>
